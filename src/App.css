@@ -36,18 +36,24 @@
   font-family: 'Open Sans', sans-serif;    
   width: 80%;
   height: 30px;
+  line-height: 30px;
   background-color: #4A90E2;
   color: white;
   border: none;
   font-size: 32px;
+  margin-top: -8px;
 }
 .info-main {
   display: block;
   height: 100%;
   color: white;
+  padding-bottom: 20px;
 }
 .data {
-  padding-top: 40px;
+  padding-top: 10px;
+}
+.unit {
+  font-size: 3em;
 }
 .data span {
   display: block;
@@ -67,6 +73,7 @@
   clear: both;
   width: inherit;
   background-color: white;
+  margin-top: 20px;
 }
 
 .description {

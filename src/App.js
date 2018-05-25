@@ -3,7 +3,6 @@ import './App.css';
 import PropTypes from 'prop-types'
 import { Info, Search, Week } from './components'
 import { WeatherApi } from './Api'
-// import { Forecast } from './lib/util'
 
 
 class App extends Component {
@@ -21,6 +20,12 @@ class App extends Component {
         })
         console.log(this.state.dailyWeather)
       })
+  }
+
+  handleClearInput = () => {
+    this.setState({
+      query: ''
+    })
   }
 
   handleEmptySubmit = (evt) => {
@@ -41,9 +46,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <div className="widget">
             {this.state.errorMessage && <span className='error'>{this.state.errorMessage}</span>}
+          <div className="widget">
             <Search handleInputChange={this.handleInputChange}
+              clear={this.handleClearInput}
               query={this.state.query}
               handleSubmit={submitHandler}/>
 
