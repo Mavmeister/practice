@@ -7,24 +7,34 @@ import { WeatherApi } from './Api'
 
 class App extends Component {
   state = {
-    query: ''
+    query: '',
+    error: false
   }
 
   handleSubmit = (evt) => {
     evt.preventDefault()
     WeatherApi(this.state.query)
       .then(data => {
-        this.setState({
-          dailyWeather: data.list.slice(1, data.list.length - 1),
-          today: data.list.slice(0, 1)
-        })
+        if (data){
+          this.setState({
+            dailyWeather: data.list.slice(1, data.list.length - 1),
+            today: data.list.slice(0, 1)
+          })
+        } else {
+          this.setState({
+            error: true,
+            errorMessage:  'Please enter a valid US city'
+          })
+        }
+        console.log(data)
         console.log(this.state.dailyWeather)
       })
   }
 
   handleClearInput = () => {
     this.setState({
-      query: ''
+      query: '',
+      errorMessage: ''
     })
   }
 
@@ -37,7 +47,8 @@ class App extends Component {
 
   handleInputChange = (evt) => {
     this.setState({
-      query: evt.target.value
+      query: evt.target.value,
+      errorMessage: ''
     })
   }
 
